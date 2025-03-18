@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Profesionalizante</title>
+</head>
+<body>
+    <form>
+        <input type="email" aling="center" id="email" placeholder="Ingresar un Correo"> <br> <br>
+        <input type="password" aling="center" id="contraseña" placeholder="Ingresar contraseña"><br> <br>
+        <button type="submit" name="enviar" onclick="login()">Enviar </button> <br> <br>
+    </form>
+    <script>
+
+        function login() {
+           
+            let email= document.getElementById("email").value;
+            let contraseña= document.getElementById("contraseña").value;
+         
+        
+            fetch("formulario.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email: email, contraseña: contraseña })
+            })
+            .then(response => response.json()) // Convertir respuesta a JSON
+            .then(data => {
+            document.getElementById("mensaje").innerText = data.mensaje;
+            })
+        
+        };
+        
+    </script>
+</body>
+</html>
