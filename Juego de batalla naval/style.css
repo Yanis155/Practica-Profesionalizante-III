@@ -1,0 +1,17 @@
+#container-board {
+    max-width: 1200px; /* Ancho del tablero */
+ }
+ 
+ #board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 columnas iguales en el tablero */
+    grid-template-rows: repeat(8, 1fr); /* 8 filas en el tablero */
+ }
+ 
+.box {
+    background-color: #EBEBD0; /* Color de fondo de las casillas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em; /* Tamaño de la fuente de las piezas */
+}

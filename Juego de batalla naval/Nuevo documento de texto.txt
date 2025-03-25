@@ -1,0 +1,9 @@
+hacer un tablero donde tenga un objeto y clases
+
+10 posiciones con diferentes tamaños
+metodo: pegar
+barco propiedades: 
+darle click a una de esas celdas, si contiene un barco mostrar un mensaje, y si el barco
+es de una sola celda que diga hundido. 
+si el barco al que tocamos ya tenia todas las celdas tomadas dira "tocado".
+el juego termina 
