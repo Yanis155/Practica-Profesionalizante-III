@@ -1,0 +1,36 @@
+body {
+  background-color: SNOW;
+}
+#tablero {
+  display: block;
+}
+.casilla {
+  color: ANTIQUEWHITE;
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  text-align: center;
+  line-height: 2em;
+  background-color: blue;
+  margin: 2px 0;
+}
+.barco {
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  text-align: center;
+  line-height: 2em;
+  background-color: greenyellow;
+  margin: 2px 0;
+}
+.transparente{
+  opacity: 0.5;
+}
+
+.conBarco{
+  background-color: greenyellow;
+}
+.clear {
+  clear: both;
+}
+

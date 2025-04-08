@@ -1,0 +1,2 @@
+Realizar un ejercicio de juego donde ponga el inicio y aparecen numeros al azar donde luego tiene que aparecer una caja que la sumatoria 
+de esos numeros te de el juego el resultado final y te muestre si te equivocaste o no. 
