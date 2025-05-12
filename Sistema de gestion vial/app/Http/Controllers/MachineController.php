@@ -19,7 +19,7 @@ class MachineController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -27,7 +27,10 @@ class MachineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $saveDates= $request->input('fecha_inicio', now()->toDateString());
+        $saveDates->save();
+
+        return redirect()->route('index');
     }
 
     /**

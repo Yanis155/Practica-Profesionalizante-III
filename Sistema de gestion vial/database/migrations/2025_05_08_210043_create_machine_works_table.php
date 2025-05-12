@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('machine_works', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
+            $table->date('start_date')->default(now()->toDateString()); //Fecha actual por defecto
             $table->date('end_date');
             $table->string('final_reason');
             $table->string('mileage_traveled');

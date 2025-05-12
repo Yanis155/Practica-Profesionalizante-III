@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica Profesionalizante</title>
-    <script src="script.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -25,4 +24,23 @@
         <div id="mensaje" class="text-center fw-bold"></div>
     </div>
 </body>
+<script>
+    function login() {
+   
+    let email= document.getElementById("email").value;
+    let password= document.getElementById("password").value;
+ 
+    fetch("login.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: email, password: password })
+      })
+        .then(response => response.json()) // Convertir respuesta a JSON
+        .then(data => {
+          document.getElementById("mensaje").innerText = data.mensaje;
+        });
+};
+</script>
 </html>

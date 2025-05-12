@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\User;
+
 
 class AccesoTest
 {
@@ -18,14 +18,7 @@ class AccesoTest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $users= empty($users) ? [null] :$users;
-
-        foreach ($users as $user){
-            if(Auth::user($user)->check()){
-                return redirect(RouteServiceProvider::HOME);
-            }
-        }
-
+    
         return $next($request);
     }
 }
