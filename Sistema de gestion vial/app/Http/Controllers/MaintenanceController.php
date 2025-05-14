@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Maintenance;
 use Illuminate\Http\Request;
-use App\Models\Machine;
-class MachineController extends Controller
+
+class MaintenanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $machine= Machine::all();
-        return redirect('index');
-
+        //
     }
 
     /**
@@ -21,26 +20,21 @@ class MachineController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $machine= Machine::create([
-            'start_date'->$request->start_date,
-            'end_date'->$request->end_date,
-            'final_reason'->$request->final_reason,
-            'mileage_traveled'->$request->mileage_traveled,
-
-        ]);
-
-        return redirect()->route('index');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Maintenance $maintenance)
     {
         //
     }
@@ -48,7 +42,7 @@ class MachineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Maintenance $maintenance)
     {
         //
     }
@@ -56,7 +50,7 @@ class MachineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Maintenance $maintenance)
     {
         //
     }
@@ -64,8 +58,8 @@ class MachineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Maintenance $maintenance)
     {
-    
+        //
     }
 }
