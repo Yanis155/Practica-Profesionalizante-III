@@ -18,5 +18,18 @@ class ProvinceSeeder extends Seeder
         DB::table('provinces')->insert([
             'name'=> 'Santa fe',
         ]);
+        DB::table('provinces')->insert([
+            'name'=> 'Cordoba',
+        ]);
+        DB::table('provinces')->insert([
+            'name'=> 'Buenos aires',
+        ]);
+         DB::table('provinces')->insert([
+            'name'=> 'Corrientes',
+        ]);
+        DB::table('provinces')->insert([
+            'name'=> 'Misiones',
+        ]);
     }
+    
 }

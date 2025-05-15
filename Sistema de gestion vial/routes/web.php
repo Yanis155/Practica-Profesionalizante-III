@@ -22,6 +22,6 @@ Route::get('/login', function () {
     return view('login');
 });
 
-//Route::get('/index', MachineController::class)->name('machine.index');
+Route::resource('machines', MachineController::class)->only(['index', 'create', 'store', 'destroy']);
 
 

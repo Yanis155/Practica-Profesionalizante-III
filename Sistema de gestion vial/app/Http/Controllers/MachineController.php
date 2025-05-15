@@ -11,8 +11,8 @@ class MachineController extends Controller
      */
     public function index()
     {
-        $machine= Machine::all();
-        return redirect('index');
+       $machines= Machine::with('obra')->get();
+       return view('machines.index', compact('machines'));
 
     }
 
@@ -26,7 +26,7 @@ class MachineController extends Controller
 
     public function store(Request $request)
     {
-        $machine= Machine::create([
+        $machines= Machine::create([
             'start_date'->$request->start_date,
             'end_date'->$request->end_date,
             'final_reason'->$request->final_reason,
@@ -34,7 +34,7 @@ class MachineController extends Controller
 
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('create');
     }
 
     /**
@@ -66,6 +66,9 @@ class MachineController extends Controller
      */
     public function destroy(string $id)
     {
-    
+        $machines= Machine::findOrFail($id);
+        $machines->delete();
+
+        return redirect('machines.index')->with('success', 'Maquina eliminada correctamente');
     }
 }

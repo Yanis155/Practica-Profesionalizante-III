@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Work;
 
 class WorkController extends Controller
 {
@@ -11,7 +12,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        //
+        $works= Work::all();
+        return view('machine');
     }
 
     /**
