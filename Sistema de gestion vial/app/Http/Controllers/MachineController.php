@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Machine;
+use App\Models\Works;
 class MachineController extends Controller
 {
     /**
@@ -11,8 +12,8 @@ class MachineController extends Controller
      */
     public function index()
     {
-       $machines= Machine::with('obra')->get();
-       return view('machines.index', compact('machines'));
+       $machines= Machine::with('work_machines')->get();
+       return view('index', compact('machines'));
 
     }
 
@@ -21,20 +22,20 @@ class MachineController extends Controller
      */
     public function create()
     {
-       
+       return view('create');
     }
 
     public function store(Request $request)
     {
         $machines= Machine::create([
+            'type'->$request->type,
+            'model'->$request->model,
+            'name'->$request->name,
             'start_date'->$request->start_date,
             'end_date'->$request->end_date,
-            'final_reason'->$request->final_reason,
-            'mileage_traveled'->$request->mileage_traveled,
-
         ]);
 
-        return redirect()->route('create');
+        return redirect()->route('machines.index');
     }
 
     /**

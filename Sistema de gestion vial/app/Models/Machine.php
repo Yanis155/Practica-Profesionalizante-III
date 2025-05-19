@@ -13,7 +13,7 @@ class Machine extends Model
         'type',
         'model',
     ];
-     public function machine_works(){
-        return $this->belongsToMany(Work::class, 'machine_work');
+     public function work_machines(){
+        return $this->belongsToMany(Work::class, 'work_machines');
     }
 }

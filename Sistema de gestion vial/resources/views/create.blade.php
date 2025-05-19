@@ -27,14 +27,14 @@
             </div>
 
             <div class="form-group">
-                <label for="obra_id">Obra</label>
-                <select name="obra_id" id="obra_id" required>
+                <label for="works_id">Obra</label>
+                <select name="works_id" id="works_id" required>
                     <option value="">Selecciona una obra</option>
-                    @foreach ($obras as $obra)
-                        <option value="{{ $obra->id }}">{{ $obra->name }}</option>
+                    @foreach ($works as $work)
+                        <option value="{{ $work->id }}">{{ $work->name }}</option>
                     @endforeach
                 </select>
-                @error('obra_id')
+                @error('work_id')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div>

@@ -12,12 +12,12 @@
 <html>
 <head>
     <title>Gestión de Máquinas</title>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Lista de Máquinas</h1>
-
+        <h2>Lista de Máquinas</h2>
+        <hr>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -25,12 +25,12 @@
         @endif
 
         <a href="{{ route('machines.create') }}" class="btn btn-primary">Nueva Máquina</a>
-
+        <hr>
         <table>
             <thead>
                 <tr>
-                    <th>Tipo</th>
-                    <th>Modelo</th>
+                    <th>Tipo</th> 
+                    <th> Modelo</th>
                     <th>Obra</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
@@ -38,17 +38,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($machines as $machine)
                     <tr>
-                        <td>{{ $machine->type }}</td>
-                        <td>{{ $machine->model }}</td>
-                        <td>{{ $machine->obra->name }}</td>
+                        @foreach ($machines as $machine)
+                        <td>{{ $machine->type }}</td> 
+                        <td>{{ $machine->model }}</td> 
+                        <td>{{ $machine->name }}</td>
                         <td>{{ $machine->start_date }}</td>
                         <td>{{ $machine->end_date ?? 'N/A' }}</td>
                         <td>
-                            <form action="{{ route('machines.destroy', $machine->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
+                            <form action="machines/{{$machine->id}}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
                                 @csrf
-                                @method('DELETE')
+                                @method('delete')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
                         </td>

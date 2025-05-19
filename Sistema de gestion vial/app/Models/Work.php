@@ -23,8 +23,8 @@ class Work extends Model
         return $value ?? now()->toDateString();
     }
 
-    public function machine_works(){
-        return $this->belongsToMany(Machine::class, 'machine_works');
+    public function work_machines(){
+        return $this->belongsToMany(Machine::class, 'work_machines');
     }
      public function provinces(){
         return $this->belongsToMany(Province::class);

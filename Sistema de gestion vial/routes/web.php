@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,6 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::resource('machines', MachineController::class)->only(['index', 'create', 'store', 'destroy']);
+Route::resource('machines', MachineController::class)->only(['index', 'create','store','destroy']);
 
-
+Route::resource('works', WorkController::class)->only('index');

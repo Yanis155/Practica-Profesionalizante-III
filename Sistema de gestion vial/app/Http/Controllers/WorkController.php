@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Work;
-
+use App\Models\Machine;
 class WorkController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class WorkController extends Controller
     public function index()
     {
         $works= Work::all();
-        return view('machine');
+        dd($works);
+        return view('works.index', compact('works'));
     }
 
     /**
@@ -61,6 +62,6 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    
     }
 }
