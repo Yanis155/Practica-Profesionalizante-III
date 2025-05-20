@@ -23,6 +23,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::resource('machines', MachineController::class)->only(['index', 'create','store','destroy']);
-
+Route::resource('machines', MachineController::class)->only(['index', 'store','create','destroy']);
+Route::get('machines/create', function(){
+    return view('create');
+});
 Route::resource('works', WorkController::class)->only('index');

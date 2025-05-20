@@ -30,10 +30,8 @@
             <thead>
                 <tr>
                     <th>Tipo</th> 
-                    <th> Modelo</th>
-                    <th>Obra</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
+                    <th>Modelo</th>
+                    <th> Provincia Actual</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -42,9 +40,7 @@
                         @foreach ($machines as $machine)
                         <td>{{ $machine->type }}</td> 
                         <td>{{ $machine->model }}</td> 
-                        <td>{{ $machine->name }}</td>
-                        <td>{{ $machine->start_date }}</td>
-                        <td>{{ $machine->end_date ?? 'N/A' }}</td>
+                        <td></td> 
                         <td>
                             <form action="machines/{{$machine->id}}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
                                 @csrf
