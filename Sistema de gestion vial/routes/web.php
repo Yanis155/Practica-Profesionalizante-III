@@ -27,4 +27,6 @@ Route::resource('machines', MachineController::class)->only(['index', 'store','c
 Route::get('machines/create', function(){
     return view('create');
 });
-Route::resource('works', WorkController::class)->only('index');
+Route::resource('works', WorkController::class)->only(['index']);
+
+

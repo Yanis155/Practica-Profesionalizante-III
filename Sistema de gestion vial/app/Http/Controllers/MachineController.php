@@ -13,7 +13,7 @@ class MachineController extends Controller
     public function index()
     {
        $machines= Machine::with('work_machines')->get();
-       return view('index', compact('machines'));
+       return view('Machines.index', compact('machines'));
 
     }
 
@@ -31,9 +31,7 @@ class MachineController extends Controller
              'type'->$request->type,
              'model'->$request->model,
              'name'->$request->name,
-             'start_date'->$request->start_date,
-             'end_date'->$request->end_date,
-             
+
         ]);
 
         return redirect()->route('machines.index');

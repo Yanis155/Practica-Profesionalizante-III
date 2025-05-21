@@ -12,9 +12,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works= Work::all();
-        dd($works);
-        return view('works.index', compact('works'));
+        $works= Work::with('work_machines')->get();;
+        return view('Works.index', compact('works'));
     }
 
     /**
@@ -22,7 +21,7 @@ class WorkController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -30,7 +29,11 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $works= Work::create([
+             'name'->$request->name,
+             'start_date'->$request->start_date,
+             'end_date'->$request->end_date,
+        ]);
     }
 
     /**
@@ -54,7 +57,10 @@ class WorkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $works= Machine::findOrFail($id);
+        $works->name= $request->name;
+        $works->start_date= $request->start_date;
+        $works->start_date= $request->start_date;
     }
 
     /**
@@ -62,6 +68,9 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-    
+        $works= Machine::findOrFail($id);
+        $works->delete();
+
+        return redirect()->route('works.index')->with('success', 'Maquina eliminada correctamente');
     }
 }

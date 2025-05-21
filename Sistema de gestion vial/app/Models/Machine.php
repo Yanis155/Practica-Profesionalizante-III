@@ -22,7 +22,6 @@ class Machine extends Model
      public function work_machines(){
         return $this->belongsToMany(Work::class, 'work_machines');
     }
-    public function province(){
-        return $this->hasMany(Province::class);
-    }
+    
+
 }

@@ -12,7 +12,8 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        //
+        $maintenance= Maintenance::all();
+        return view();
     }
 
     /**
