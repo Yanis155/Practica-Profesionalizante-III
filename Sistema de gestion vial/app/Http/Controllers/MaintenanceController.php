@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Maintenance;
 use Illuminate\Http\Request;
-
+use App\Models\Maintenance;
 class MaintenanceController extends Controller
 {
     /**
@@ -35,7 +34,7 @@ class MaintenanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Maintenance $maintenance)
+    public function show()
     {
         //
     }
@@ -43,7 +42,7 @@ class MaintenanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Maintenance $maintenance)
+    public function edit()
     {
         //
     }
@@ -51,7 +50,7 @@ class MaintenanceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Maintenance $maintenance)
+    public function update(Request $request)
     {
         //
     }
@@ -59,8 +58,11 @@ class MaintenanceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Maintenance $maintenance)
+    public function destroy(string $id)
     {
-        //
+        $maintenance= Maintenance::findOrFail($id);
+        $maintenance->delete();
+
+        return redirect()->route('maintenance.index');
     }
 }

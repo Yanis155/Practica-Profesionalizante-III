@@ -12,7 +12,7 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works= Work::with('work_machines')->get();;
+        $works= Work::all();
         return view('Works.index', compact('works'));
     }
 

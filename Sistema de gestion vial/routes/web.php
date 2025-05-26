@@ -33,5 +33,7 @@ Route::post('Machines/edit', function(){
 });
 
 Route::resource('works', WorkController::class)->only(['index','create','destroy']);
-
+route::post('Works/edit', function(){
+    return view('Works.edit');
+});
 
