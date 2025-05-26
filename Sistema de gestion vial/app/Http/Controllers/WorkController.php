@@ -68,9 +68,9 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-        $works= Machine::findOrFail($id);
+        $works= Work::findOrFail($id);
         $works->delete();
 
-        return redirect()->route('works.index')->with('success', 'Maquina eliminada correctamente');
+        return redirect()->route('works.index')->with('success', 'Obra eliminada correctamente');
     }
 }

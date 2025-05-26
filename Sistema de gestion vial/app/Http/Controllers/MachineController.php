@@ -22,7 +22,7 @@ class MachineController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('Machines.create');
     }
 
     public function store(Request $request)
@@ -50,7 +50,8 @@ class MachineController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $machines= Machine::FindorFail($id);
+        return view('Machines.edit', compact('machines'));
     }
 
     /**
@@ -63,8 +64,11 @@ class MachineController extends Controller
         $machines->model= $request->model;
         $machines->name= $request->name;
         $machines->start_date= $request->start_date;
-        $machines->start_date= $request->start_date;
-        
+        $machines->end_date= $request->end_date;
+        $machines->final_reason= $request->final_reason;
+        $machines->save();
+
+        return view('Machines.index', compact('machines'));
     }
 
     /**

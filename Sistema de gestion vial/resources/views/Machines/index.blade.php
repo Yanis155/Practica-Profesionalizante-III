@@ -25,8 +25,9 @@
         @endif
 
         <a href="{{ route('machines.create') }}" class="btn btn-primary">Nueva Máquina</a>
+       
         <hr>
-        <table>
+        <table table-striped>
             <thead>
                 <tr>
                     <th>Tipo</th> 
@@ -41,13 +42,17 @@
                         <td>{{ $machine->type }}</td> 
                         <td>{{ $machine->model }}</td> 
                         <td></td> 
+                        
                         <td>
-                            <form action="machines/{{$machine->id}}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
+                            <a href="{{ route('machines.edit', $machine->id) }}" class="btn btn-primary btn-sm">Editar</a>        
+                        </td>  
+                        <td>
+                            <form action="{{ route('machines.destroy', $machine->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
                                 @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-primary btn-danger btn-sm">Eliminar</button>     
                             </form>
-                        </td>
+                        </td>           
                     </tr>
                 @endforeach
             </tbody>

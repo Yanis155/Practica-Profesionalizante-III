@@ -23,10 +23,15 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::resource('machines', MachineController::class)->only(['index', 'store','create','destroy']);
-Route::get('machines/create', function(){
-    return view('create');
+
+Route::resource('machines', MachineController::class)->only(['index','store','update','create','destroy']);
+Route::get('Machines/create', function(){
+    return view('Machines.store');
 });
-Route::resource('works', WorkController::class)->only(['index']);
+Route::post('Machines/edit', function(){
+    return view('Machines.edit');
+});
+
+Route::resource('works', WorkController::class)->only(['index','create','destroy']);
 
 
