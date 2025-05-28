@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Work;
+use App\Models\Province;
 use App\Models\Machine;
 class WorkController extends Controller
 {
@@ -21,7 +22,8 @@ class WorkController extends Controller
      */
     public function create()
     {
-        
+        $provinces= Province::all();  //cargo todas las provincias
+        return view('Works.create', compact('provinces'));
     }
 
     /**
@@ -30,10 +32,12 @@ class WorkController extends Controller
     public function store(Request $request)
     {
         $works= Work::create([
-             'name'->$request->name,
-             'start_date'->$request->start_date,
-             'end_date'->$request->end_date,
+             'name'=>$request->name,
+             'start_date'=>$request->start_date,
+             'end_date'=>$request->end_date,
+             'province_id'=>$request->province_id,
         ]);
+        return redirect()->route('works.index');
     }
 
     /**
@@ -49,7 +53,8 @@ class WorkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $works= Work::FindorFail($id);
+        return view('Works.edit', compact('works'));
     }
 
     /**
@@ -57,10 +62,14 @@ class WorkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $works= Machine::findOrFail($id);
+        $works= Work::FindOrFail($id);
         $works->name= $request->name;
         $works->start_date= $request->start_date;
-        $works->start_date= $request->start_date;
+        $works->end_date= $request->end_date;
+        $works->province_id= $request->province_id;
+        $works->save();
+
+        return view('Works.index', compact('works'));
     }
 
     /**

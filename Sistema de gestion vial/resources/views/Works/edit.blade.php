@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Obras</title>
+    <title>Editar Obra</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
@@ -121,57 +119,50 @@
             }
         }
     </style>
-    </head>
-<body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Gestión de Obras</title>
 </head>
 <body>
     <div class="container">
-        <h2>Lista de Obras</h2>
-        <hr>
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <h2>Editar Obra</h2>
 
-        <a href="{{ route('works.create') }}" class="btn btn-primary">Nueva Obra</a>
-        <hr>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre de la obra</th> 
-                    <th>Fecha de inicio</th>
-                    <th>Fecha de fin</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <tr>
-                        @foreach ($works as $work)
-                        
-                        <td>{{ $work->name }}</td> 
-                        <td>{{ $work->start_date }}</td> 
-                        <td>{{ $work->end_date }}</td> 
+        <form action="{{ route('works.update', $works->id) }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" value="{{old('name', $works->name)}}">
+                @error('type')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div> <br>
+           
+            <div class="form-group">
+                <label for="start_date">Fecha de Inicio: </label>
+                <input type="date" name="start_date" id="start_date" value="{{old('start_date', $works->start_date)}}">
+                @error('start_date')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div> <br>
 
-                         <td>
-                            <a href="{{ route('works.edit' , $work->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="{{ route('works.destroy', $work->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta obra?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-primary btn-danger btn-sm">Eliminar</button>     
-                            </form>
-                        </td>
-                    </tr>
+            <div class="form-group">
+                <label for="end_date">Fecha de Fin: </label>
+                <input type="date" name="end_date" id="end_date" value="{{old('end_date', $works->end_date)}}" >
+                @error('end_date')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div> <br>
 
+            <div class="form-group">
+                <label for="provinces">Provincia: </label>
+                <select multiple class="form-control" name="province" id="province_id">
+                    <option value="">Selecciona: </option>
+                    @foreach ($provinces as $province)
+                        <option value="{{ $province->id }}">{{$province->name}}</option>              
+                    @endforeach
+                </select>
+            </div> <br>
 
-                @endforeach
-            </tbody>
-
-        </table>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{ route('works.index') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
     </div>
 </body>
 </html>

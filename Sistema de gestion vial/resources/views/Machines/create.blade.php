@@ -50,7 +50,7 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="end_date">Fecha de Fin: (opcional)</label>
+                <label for="end_date">Fecha de Fin: </label>
                 <input type="date" name="end_date" id="end_date">
                 @error('end_date')
                     <span class="error">{{ $message }}</span>
@@ -58,7 +58,7 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="final_reason">Razón Final: (opcional)</label>
+                <label for="final_reason">Razón Final: </label>
                 <textarea name="final_reason" id="final_reason"></textarea>
                 @error('final_reason')
                     <span class="error">{{ $message }}</span>
@@ -66,7 +66,7 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="mileage_traveled">Kilometraje Recorrido: (opcional)</label>
+                <label for="mileage_traveled">Kilometraje Recorrido: </label>
                 <input type="number" name="mileage_traveled" id="mileage_traveled">
                 @error('mileage_traveled')
                     <span class="error">{{ $message }}</span>
