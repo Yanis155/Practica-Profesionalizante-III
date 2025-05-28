@@ -8,7 +8,7 @@
     <div class="container">
         <h2>Nueva Obra</h2>
 
-        <form action="{{ route('') }}" method="POST">
+        <form action="{{ route('works.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Nombre</label>
@@ -32,6 +32,16 @@
                 @error('end_date')
                     <span class="error">{{ $message }}</span>
                 @enderror
+            </div> <br>
+
+            <div class="form-group">
+                <label for="provinces">Provincia: </label>
+                <select multiple class="form-control" name="province" id="province_id">
+                    <option value="">Selecciona: </option>
+                    @foreach ($provinces as $province)
+                        <option value="{{ $province->id }}">{{$province->name}}</option>              
+                    @endforeach
+                </select>
             </div> <br>
 
             <button type="submit" class="btn btn-primary">Guardar</button>

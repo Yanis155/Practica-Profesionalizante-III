@@ -139,9 +139,10 @@
             <tbody>
                     <tr>
                         @foreach ($works as $work)
+                        
                         <td>{{ $work->name }}</td> 
                         <td>{{ $work->start_date }}</td> 
-                        <td>{{ $work->end_date }}</td>  
+                        <td>{{ $work->end_date }}</td> 
 
                         <td>
                             <button type="submit" class="btn btn-primary btn-sm">Editar</button>   

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Machine;
-use App\Models\Works;
+use App\Models\Work;
 class MachineController extends Controller
 {
     /**
@@ -22,7 +22,8 @@ class MachineController extends Controller
      */
     public function create()
     {
-        return view('Machines.create');
+        $works= Work::all();
+        return view('Machines.create', compact('works'));
     }
 
     public function store(Request $request)
@@ -79,6 +80,6 @@ class MachineController extends Controller
         $machines= Machine::findOrFail($id);
         $machines->delete();
 
-        return redirect()->route('machines.index')->with('success', 'Maquina eliminada correctamente');
+        return redirect()->route('machines.index');
     }
 }

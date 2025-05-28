@@ -23,17 +23,18 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/machines', [MachineController::class, 'index'])->name('machines.index');
+Route::get('/machines/create', [MachineController::class, 'create'])->name('machines.create');
+Route::post('/machines', [MachineController::class, 'store'])->name('machines.store');
+Route::get('/machines/{id}/edit', [MachineController::class, 'edit'])->name('machines.edit');
+Route::put('/machines/{id}', [MachineController::class, 'update'])->name('machines.update');
+Route::delete('/machines', [MachineController::class, 'destroy'])->name('machines.destroy');
 
-Route::resource('machines', MachineController::class)->only(['index','store','update','create','destroy']);
-Route::get('Machines/create', function(){
-    return view('Machines.store');
-});
-Route::post('Machines/edit', function(){
-    return view('Machines.edit');
-});
 
-Route::resource('works', WorkController::class)->only(['index','create','destroy']);
-route::post('Works/edit', function(){
-    return view('Works.edit');
-});
+Route::get('/works', [WorkController::class, 'index'])->name('works.index');
+Route::get('/works/create', [WorkController::class, 'create'])->name('works.create');
+Route::post('/works', [WorkController::class, 'store'])->name('works.store');
+Route::get('/works/{id}/edit', [WorkController::class, 'edit'])->name('works.edit');
+Route::put('/works/{id}', [WorkController::class, 'update'])->name('works.update');
+Route::delete('/works/{id}', [WorkController::class, 'destroy'])->name('works.destroy');
 

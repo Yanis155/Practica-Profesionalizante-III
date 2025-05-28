@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\MachineSeeder;
 use Database\Seeders\WorkSeeder;
+use Database\Seeders\ProvinceSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**

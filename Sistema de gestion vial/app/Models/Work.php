@@ -14,6 +14,7 @@ class Work extends Model
         'name',
         'start_date',
         'end_date',
+        'province_id',
     ];
     protected $atributtes= [
         'start_date'=> null,
