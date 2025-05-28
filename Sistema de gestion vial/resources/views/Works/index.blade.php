@@ -127,10 +127,11 @@
 
         <a href="{{ route('works.create') }}" class="btn btn-primary">Nueva Obra</a>
         <hr>
-        <table table-striped>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Nombre de la obra</th> 
+                    <th>Provincia</th> 
                     <th>Fecha de inicio</th>
                     <th>Fecha de fin</th>
                     <th>Acciones</th>
@@ -141,13 +142,13 @@
                         @foreach ($works as $work)
                         
                         <td>{{ $work->name }}</td> 
+                        <td>{{ $work->provinces->name}}</td> 
                         <td>{{ $work->start_date }}</td> 
                         <td>{{ $work->end_date }}</td> 
 
+                    
                         <td>
-                            <button type="submit" class="btn btn-primary btn-sm">Editar</button>   
-                        </td>
-                        <td>
+                            <a href="{{ route('works.edit' , $work->id)}}" class="btn btn-primary btn-sm">Editar</a>
                             <form action="{{ route('works.destroy', $work->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta obra?');">
                                 @csrf
                                 @method('DELETE')

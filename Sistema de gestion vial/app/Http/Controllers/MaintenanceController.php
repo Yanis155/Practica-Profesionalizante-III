@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Maintenance;
+use App\Models\Machine;
 class MaintenanceController extends Controller
 {
     /**
@@ -11,8 +12,8 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        $maintenance= Maintenance::all();
-        return view();
+        $maintenances= Maintenance::all();
+        return view('Maintenance.index', compact('maintenances'));
     }
 
     /**
@@ -28,7 +29,15 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $maintenances= Maintenance::create([
+             'type'->$request->type,
+             'start_date'->$request->start_date,
+             'end_date'->$request->end_date,
+             'current_mileage'->$request->current_mileage,
+            'machine_id'->$request->machine_id,
+        ]);
+
+        return redirect()->route('maintenance.index');
     }
 
     /**
@@ -42,17 +51,25 @@ class MaintenanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(string $id)
     {
-        //
+        $maintenances= Maintenance::FindorFail($id);
+        return view('Maintenance.edit', compact('maintenance'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        //
+        $maintenances= Machine::findOrFail($id);
+        $maintenances->type= $request->type;
+        $maintenances->start_date= $request->start_date;
+        $maintenances->end_date= $request->end_date;
+        $maintenances->current_mileage= $request->current_mileage;
+        $maintenances->save();
+
+        return view('Maintenance.index', compact('maintenance'));
     }
 
     /**
@@ -60,8 +77,8 @@ class MaintenanceController extends Controller
      */
     public function destroy(string $id)
     {
-        $maintenance= Maintenance::findOrFail($id);
-        $maintenance->delete();
+        $maintenances= Maintenance::findOrFail($id);
+        $maintenances->delete();
 
         return redirect()->route('maintenance.index');
     }

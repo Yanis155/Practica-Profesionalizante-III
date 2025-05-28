@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Work;
 
 class Province extends Model
 {
@@ -13,6 +14,6 @@ class Province extends Model
         'name',
     ];
     public function works(){
-        return $this->hasMany(Machine::class);
+        return $this->hasMany(Work::class);
     }
 }

@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <a href="" class="btn btn-primary">Nuevo mantenimiento</a>
+        <a href="{{ route('maintenance.create') }}" class="btn btn-primary">Nuevo mantenimiento</a>
        
         <hr>
         <table table-striped>

@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="provinces">Provincia: </label>
-                <select multiple class="form-control" name="province" id="province_id">
+                <select name="province" id="province_id">
                     <option value="">Selecciona: </option>
                     @foreach ($provinces as $province)
                         <option value="{{ $province->id }}">{{$province->name}}</option>              
