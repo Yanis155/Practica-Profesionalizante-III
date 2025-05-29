@@ -39,9 +39,9 @@ Route::get('/works/{id}/edit', [WorkController::class, 'edit'])->name('works.edi
 Route::put('/works/{id}', [WorkController::class, 'update'])->name('works.update');
 Route::delete('/works/{id}', [WorkController::class, 'destroy'])->name('works.destroy');
 
-Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
-Route::get('/maintenance/create', [MaintenanceController::class, 'create'])->name('maintenance.create');
-Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
-Route::get('/maintenance/{id}/edit', [MaintenanceController::class, 'edit'])->name('maintenance.edit');
-Route::put('/maintenance/{id}', [MaintenanceController::class, 'update'])->name('maintenance.update');
-Route::delete('/maintenance/{id}', [MaintenanceController::class, 'destroy'])->name('maintenance.destroy');
+Route::get('/maintenances', [MaintenanceController::class, 'index'])->name('maintenances.index');
+Route::get('/maintenances/create', [MaintenanceController::class, 'create'])->name('maintenances.create');
+Route::post('/maintenances', [MaintenanceController::class, 'store'])->name('maintenances.store');
+Route::get('/maintenances/{id}/edit', [MaintenanceController::class, 'edit'])->name('maintenances.edit');
+Route::put('/maintenances/{id}', [MaintenanceController::class, 'update'])->name('maintenances.update');
+Route::delete('/maintenances/{id}', [MaintenanceController::class, 'destroy'])->name('maintenances.destroy');

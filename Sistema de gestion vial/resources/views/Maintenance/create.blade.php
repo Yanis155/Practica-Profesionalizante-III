@@ -8,10 +8,10 @@
     <div class="container">
         <h2>Nuevo mantenimiento</h2>
 
-        <form action="{{ route('maintenance.store') }}" method="POST">
+        <form action="{{ route('maintenances.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="type">Tipo de mantenimiento</label>
+                <label for="type">Tipo de mantenimiento: </label>
                 <input type="text" id="type" required>
                 @error('type')
                     <span class="error">{{ $message }}</span>
@@ -35,15 +35,27 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="current_mileage">Kilometraje Actual</label>
-                <input type="date" id="current_mileage">
+                <label for="current_mileage">Kilometraje Actual: </label>
+                <input type="number" id="current_mileage">
+                @error('end_date')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div> <br>
+
+            <div class="form-group">
+                <label for="machine_id">Maquina Asignada: </label>
+                <input type="name" id="machine_id">
+                    @foreach ($machines as $machine)
+                        <option value="{{ $machine->id }}">{{$machine->name}}</option>         
+                    @endforeach
+                </input>
                 @error('end_date')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div> <br>
             
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('maintenance.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('maintenances.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

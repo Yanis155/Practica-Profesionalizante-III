@@ -21,7 +21,8 @@ class MaintenanceController extends Controller
      */
     public function create()
     {
-        //
+        $machines= Machine::all();
+        return view('Maintenance.create', compact('maintenances','machines'));
     }
 
     /**
@@ -30,10 +31,11 @@ class MaintenanceController extends Controller
     public function store(Request $request)
     {
         $maintenances= Maintenance::create([
-             'type'->$request->type,
-             'start_date'->$request->start_date,
-             'end_date'->$request->end_date,
-             'current_mileage'->$request->current_mileage,
+             
+            'type'->$request->type,
+            'start_date'->$request->start_date,
+            'end_date'->$request->end_date,
+            'current_mileage'->$request->current_mileage,
             'machine_id'->$request->machine_id,
         ]);
 
@@ -54,7 +56,8 @@ class MaintenanceController extends Controller
     public function edit(string $id)
     {
         $maintenances= Maintenance::FindorFail($id);
-        return view('Maintenance.edit', compact('maintenance'));
+        $machines= Machine::pluck('id', 'type')->toArray();
+            return view('Maintenance.edit', compact('maintenances','machines'));
     }
 
     /**
@@ -62,14 +65,14 @@ class MaintenanceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $maintenances= Machine::findOrFail($id);
+        $maintenances= Maintenance::findOrFail($id);
         $maintenances->type= $request->type;
         $maintenances->start_date= $request->start_date;
         $maintenances->end_date= $request->end_date;
         $maintenances->current_mileage= $request->current_mileage;
         $maintenances->save();
 
-        return view('Maintenance.index', compact('maintenance'));
+        return view('Maintenance.index');
     }
 
     /**
@@ -80,6 +83,6 @@ class MaintenanceController extends Controller
         $maintenances= Maintenance::findOrFail($id);
         $maintenances->delete();
 
-        return redirect()->route('maintenance.index');
+        return redirect()->route('maintenances.index');
     }
 }

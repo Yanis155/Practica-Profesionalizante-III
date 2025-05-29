@@ -126,7 +126,7 @@
             </div>
         @endif
 
-        <a href="{{ route('maintenance.create') }}" class="btn btn-primary">Nuevo mantenimiento</a>
+        <a href="{{ route('maintenances.create') }}" class="btn btn-primary">Nuevo mantenimiento</a>
        
         <hr>
         <table class="table table-striped table-hover">
@@ -146,12 +146,9 @@
                         <td>{{ $maintenance->start_date }}</td> 
                         <td>{{ $maintenance->end_date }}</td> 
                         <td>{{ $maintenance->current_mileage }}</td> 
-                        <td></td> 
-                        
+                    
                         <td>
-                            <a href="" class="btn btn-primary btn-sm">Editar</a>
-                        </td>  
-                        <td>
+                            <a href="{{route('maintenances.edit', $maintenance->id)}}" class="btn btn-primary btn-sm">Editar</a>
                             <form action="{{ route('maintenances.destroy', $maintenance->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
                                 @csrf
                                 @method('DELETE')

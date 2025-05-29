@@ -54,7 +54,8 @@ class WorkController extends Controller
     public function edit(string $id)
     {
         $works= Work::FindorFail($id);
-        return view('Works.edit', compact('works'));
+        $provinces= Province::all();
+        return view('Works.edit', compact('works', 'provinces'));
     }
 
     /**

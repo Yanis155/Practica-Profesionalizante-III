@@ -92,32 +92,6 @@
                 white-space: nowrap;
             }
         }
-
-        /* Tema oscuro */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #212529;
-            }
-            .container {
-                background-color: #2c2f33;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            }
-            h2 {
-                color: #f8f9fa;
-            }
-            .table {
-                border: 1px solid #495057;
-            }
-            .table th {
-                background-color: #0056b3;
-            }
-            .table-striped tbody tr:nth-of-type(odd) {
-                background-color: #343a40;
-            }
-            .table-hover tbody tr:hover {
-                background-color: #495057;
-            }
-        }
     </style>
 </head>
 <body>
@@ -152,7 +126,7 @@
 
             <div class="form-group">
                 <label for="provinces">Provincia: </label>
-                <select multiple class="form-control" name="province" id="province_id">
+                <select name="province" id="province_id">
                     <option value="">Selecciona: </option>
                     @foreach ($provinces as $province)
                         <option value="{{ $province->id }}">{{$province->name}}</option>              
