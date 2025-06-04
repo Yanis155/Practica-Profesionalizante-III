@@ -120,7 +120,7 @@
         @endif
 
         <a href="{{ route('machines.create') }}" class="btn btn-primary">Nueva Máquina</a>
-       
+        <a href="{{ route('workMachines.active') }}" class="btn btn-primary">Maquinas Activas</a>
         <hr>
         <table class="table table-striped table-hover">
             <thead>

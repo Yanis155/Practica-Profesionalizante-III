@@ -49,3 +49,4 @@ Route::post('/workMachines', [WorkMachinesController::class, 'store'])->name('wo
 Route::get('/workMachines/{id}/edit', [WorkMachinesController::class, 'edit'])->name('workMachines.edit');
 Route::put('/workMachines/{id}', [WorkMachinesController::class, 'update'])->name('workMachines.update');
 Route::delete('/workMachines/{id}', [WorkMachinesController::class, 'destroy'])->name('workMachines.destroy');
+Route::get('/workMachines', [WorkMachinesController::class, 'active'])->name('workMachines.active');

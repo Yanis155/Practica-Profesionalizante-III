@@ -13,7 +13,7 @@
         <div class="space-y-4">
             <a href="{{ route('machines.index') }}" class="block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition">Gestión de Máquinas</a>
             <a href="{{ route('works.index') }}" class="block bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition">Gestión de Obras</a>
-            <a href="{{ route('workMachines.create') }}" class="block bg-purple-500 text-white py-3 px-6 rounded-lg hover:bg-purple-600 transition">Asignaciones</a>
+            <a href="{{ route('workMachines.create') }}" class="block bg-blue-300 text-white py-3 px-6 rounded-lg hover:bg-blue-400 transition">Asignaciones</a>
             <a href="{{ route('maintenances.index') }}" class="block bg-purple-500 text-white py-3 px-6 rounded-lg hover:bg-purple-600 transition">Gestión de Mantenimientos</a>
         </div>
     </div>

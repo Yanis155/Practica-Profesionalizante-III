@@ -151,7 +151,7 @@
                         <option value="">Seleccione una Obra</option>
                         @foreach ($works as $work)
                             <option value="{{ $work->id }}">{{ $work->name }}
-                                ({{ $work->province ? $work->province->name : 'Sin Provincia' }})</option>
+                                ({{ $work->provinces ? $work->provinces->name : 'Sin Provincia' }})</option>
                         @endforeach
                     </select>
                 </div>
