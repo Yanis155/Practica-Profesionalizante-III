@@ -20,9 +20,9 @@ class MaintenanceController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        $machines= Machine::all();
-        return view('Maintenance.create', compact('maintenances','machines'));
+    {   
+        $machines= Machine::pluck('id', 'type')->toArray();
+        return view('Maintenance.create', compact('machines'));
     }
 
     /**
@@ -39,7 +39,7 @@ class MaintenanceController extends Controller
             'machine_id'->$request->machine_id,
         ]);
 
-        return redirect()->route('maintenance.index');
+        return redirect()->route('maintenances.index');
     }
 
     /**
@@ -72,7 +72,7 @@ class MaintenanceController extends Controller
         $maintenances->current_mileage= $request->current_mileage;
         $maintenances->save();
 
-        return view('Maintenance.index');
+        return redirect()->route('maintenances.index', compact('maintenances'));
     }
 
     /**

@@ -29,9 +29,9 @@ class MachineController extends Controller
     public function store(Request $request)
     {
         $machines= Machine::create([
-             'type'->$request->type,
-             'model'->$request->model,
-             'name'->$request->name,
+             'type'=>$request->type,
+             'model'=>$request->model,
+             'name'=>$request->name,
 
         ]);
 

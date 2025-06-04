@@ -3,6 +3,96 @@
 <head>
     <title>Editar Máquina</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> 
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #343a40;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dee2e6;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 15px;
+        }
+
+        .table td {
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 8px 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            padding: 8px 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #b02a37;
+            transform: translateY(-2px);
+        }
+
+        .alert-success {
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -40,53 +130,6 @@
                 <label for="model">Modelo</label>
                 <input type="text" name="model" id="model" value={{old('model', $machines->model)}} required>
                 @error('model')
-                    <span class="error">{{ $message }}</span>
-                @enderror
-            </div> <br>
-
-            <div class="form-group">
-                <label for="works_id">Obra: </label>
-                <select name="works_id" id="works_id" required>
-                    <option value="">Selecciona una obra:</option>
-                @if (isset($works) && !$works->isEmpty())
-                    @foreach ($works as $work)
-                        <option value="{{ $work->id }}">{{ $work->name }}</option>
-                    @endforeach
-                @endif
-                    @error('work_id')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
-                </select>
-            </div> <br>
-
-            <div class="form-group">
-                <label for="start_date">Fecha de Inicio: </label>
-                <input type="date" name="start_date" id="start_date" value="{{old('start_date', $machines->start_date)}}" required>
-                @error('start_date')
-                    <span class="error">{{ $message }}</span>
-                @enderror
-            </div> <br>
-
-            <div class="form-group">
-                <label for="end_date">Fecha de Fin: </label>
-                <input type="date" name="end_date" id="end_date" value="{{old('end_date', $machines->end_date)}}">
-                @error('end_date')
-                    <span class="error">{{ $message }}</span>
-                @enderror
-            </div> <br>
-
-            <div class="form-group">
-                <label for="final_reason">Razón Final: </label>
-                <textarea name="final_reason" id="final_reason" value="{{old('final_reason', $machines->final_reason)}}"></textarea>
-                @error('final_reason')
-                    <span class="error">{{ $message }}</span>
-                @enderror
-            </div> <br>
-
-            <div class="form-group">
-                <label for="mileage_traveled">Kilometraje Recorrido: </label>
-                <input type="number" name="mileage_traveled" id="mileage_traveled" value={{old('mileage_traveled', $machines->mileage_traveled)}}>
-                @error('mileage_traveled')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div> <br>

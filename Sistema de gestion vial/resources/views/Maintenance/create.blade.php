@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="container">
-        <h2>Nuevo mantenimiento</h2>
-
+        <h2>Nuevo mantenimiento de máquinas</h2>
+        <hr>
         <form action="{{ route('maintenances.store') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -44,12 +44,13 @@
 
             <div class="form-group">
                 <label for="machine_id">Maquina Asignada: </label>
-                <input type="name" id="machine_id">
-                    @foreach ($machines as $machine)
-                        <option value="{{ $machine->id }}">{{$machine->name}}</option>         
+                <select type="name" id="machine_id">
+                    <option value="">Seleccionar:</option>
+                    @foreach ($machines as $machine=>$name)
+                        <option value="{{ $machine }}">{{$machine}}</option>         
                     @endforeach
-                </input>
-                @error('end_date')
+                </select>
+                @error('machine_id')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div> <br>

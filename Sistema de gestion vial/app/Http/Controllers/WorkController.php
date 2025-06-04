@@ -32,10 +32,10 @@ class WorkController extends Controller
     public function store(Request $request)
     {
         $works= Work::create([
-             'name'=>$request->name,
-             'start_date'=>$request->start_date,
-             'end_date'=>$request->end_date,
-             'province_id'=>$request->province_id,
+            'name'=>$request->name,
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+            'province_id'=>$request->province_id,
         ]);
         return redirect()->route('works.index');
     }

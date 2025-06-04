@@ -100,6 +100,9 @@
 
         <form action="{{ route('works.update', $works->id) }}" method="POST">
             @csrf
+            @method('PUT')
+
+            <hr>
             <div class="form-group">
                 <label for="name">Nombre</label>
                 <input type="text" name="name" id="name" value="{{old('name', $works->name)}}">
@@ -107,10 +110,10 @@
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div> <br>
-           
+
             <div class="form-group">
                 <label for="start_date">Fecha de Inicio: </label>
-                <input type="date" name="start_date" id="start_date" value="{{old('start_date', $works->start_date)}}">
+                <input type="date" name="start_date" id="start_date" required>
                 @error('start_date')
                     <span class="error">{{ $message }}</span>
                 @enderror
@@ -118,14 +121,14 @@
 
             <div class="form-group">
                 <label for="end_date">Fecha de Fin: </label>
-                <input type="date" name="end_date" id="end_date" value="{{old('end_date', $works->end_date)}}" >
+                <input type="date" name="end_date" id="end_date">
                 @error('end_date')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div> <br>
-
+            
             <div class="form-group">
-                <label for="provinces">Provincia: </label>
+                <label for="province_id">Provincia: </label>
                 <select name="province" id="province_id">
                     <option value="">Selecciona: </option>
                     @foreach ($provinces as $province)

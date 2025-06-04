@@ -3,6 +3,7 @@
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\WorkMachinesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('login');
+    return view('bienvenido');
 });
 
 Route::get('/machines', [MachineController::class, 'index'])->name('machines.index');
@@ -45,3 +42,10 @@ Route::post('/maintenances', [MaintenanceController::class, 'store'])->name('mai
 Route::get('/maintenances/{id}/edit', [MaintenanceController::class, 'edit'])->name('maintenances.edit');
 Route::put('/maintenances/{id}', [MaintenanceController::class, 'update'])->name('maintenances.update');
 Route::delete('/maintenances/{id}', [MaintenanceController::class, 'destroy'])->name('maintenances.destroy');
+
+Route::get('/workMachines', [WorkMachinesController::class, 'index'])->name('workMachines.index');
+Route::get('/workMachines/create', [WorkMachinesController::class, 'create'])->name('workMachines.create');
+Route::post('/workMachines', [WorkMachinesController::class, 'store'])->name('workMachines.store');
+Route::get('/workMachines/{id}/edit', [WorkMachinesController::class, 'edit'])->name('workMachines.edit');
+Route::put('/workMachines/{id}', [WorkMachinesController::class, 'update'])->name('workMachines.update');
+Route::delete('/workMachines/{id}', [WorkMachinesController::class, 'destroy'])->name('workMachines.destroy');

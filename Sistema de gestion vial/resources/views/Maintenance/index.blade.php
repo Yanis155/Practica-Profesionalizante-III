@@ -149,7 +149,7 @@
                     
                         <td>
                             <a href="{{route('maintenances.edit', $maintenance->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="{{ route('maintenances.destroy', $maintenance->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta máquina?');">
+                            <form action="{{ route('maintenances.destroy', $maintenance->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este mantenimiento?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-primary btn-danger btn-sm">Eliminar</button>     

@@ -27,7 +27,7 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="end_date">Fecha de Fin: (opcional)</label>
+                <label for="end_date">Fecha de Fin: </label>
                 <input type="date" name="end_date" id="end_date">
                 @error('end_date')
                     <span class="error">{{ $message }}</span>
@@ -35,11 +35,12 @@
             </div> <br>
 
             <div class="form-group">
-                <label for="provinces">Provincia: </label>
-                <select name="province" id="province_id">
+                <label for="province_id">Provincia: </label>
+                <select name="province_id" id="province_id">
                     <option value="">Selecciona: </option>
                     @foreach ($provinces as $province)
-                        <option value="{{ $province->id }}">{{$province->name}}</option>              
+                        <option value="{{ $province->id }}" {{ old('province_id') == $province->id ? 'selected' : '' }}>
+                        {{ $province->name }}</option>              
                     @endforeach
                 </select>
             </div> <br>
